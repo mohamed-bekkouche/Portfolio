@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { vertexShader, fragmentShader } from "./shaders";
+
 const fixedPoints = [{ lat: 35, long: 175 }];
 
 const Globe = () => {
@@ -142,11 +143,7 @@ const Globe = () => {
       renderer.render(scene, camera);
       requestAnimationFrame(render);
     };
-
-    // Initialize everything
     init();
-
-    // Cleanup
     return () => {
       scene.clear();
       renderer.dispose();

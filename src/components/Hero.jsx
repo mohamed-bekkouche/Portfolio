@@ -73,7 +73,7 @@ function Hero() {
       <div className="flex gap-4 items-center ">
         <a
           style={{ animationDelay: `${delay + 700}ms` }}
-          href="https://github.com/Mohamed-bek"
+          href="https://github.com/mohamed-bekkouche"
           target="_blank"
           className="bg-[#171818] text-white font-bold text-[1.05rem] hover:bg-[#2d2f32]  flex items-center gap-2 px-4 cursor-pointer duration-200 py-[6px] rounded-md fade-in-down opacity-0"
         >
