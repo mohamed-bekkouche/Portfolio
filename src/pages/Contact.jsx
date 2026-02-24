@@ -1,4 +1,3 @@
-"use client";
 import { useEffect, useRef, useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import emailjs from "emailjs-com";
@@ -55,27 +54,38 @@ const Contact = () => {
   };
 
   useEffect(() => {
+    const currentContactBoxRef = contactBoxRef.current; // Store in variable
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            contactBoxRef.current?.classList.remove("scale-[0.2]");
-            contactBoxRef.current?.classList.remove("opacity-0");
-            contactRef.current?.classList.add("rotate-[-10deg]");
-            globeRef.current?.classList.add("Bounce");
+            if (contactBoxRef.current) {
+              contactBoxRef.current.classList.remove("scale-[0.2]");
+              contactBoxRef.current.classList.remove("opacity-0");
+            }
+            if (contactRef.current) {
+              contactRef.current.classList.add("rotate-[-10deg]");
+            }
+            if (globeRef.current) {
+              globeRef.current.classList.add("Bounce");
+            }
           }
         });
       },
       { threshold: 0.7 },
     );
 
-    if (contactBoxRef.current) observer.observe(contactBoxRef.current);
+    if (currentContactBoxRef) {
+      observer.observe(currentContactBoxRef);
+    }
 
     return () => {
-      if (contactBoxRef.current) observer.unobserve(contactBoxRef.current);
+      if (currentContactBoxRef) {
+        observer.unobserve(currentContactBoxRef);
+      }
     };
   }, []);
-
   return (
     <div
       id="Contact"

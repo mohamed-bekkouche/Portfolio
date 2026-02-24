@@ -11,6 +11,7 @@ import {
   SiChartdotjs,
 } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
+
 const Techs = () => {
   const techs = [
     {
@@ -74,15 +75,21 @@ const Techs = () => {
       icon: <TbBrandReactNative />,
     },
   ];
+
   const TechsRefs = useRef([]);
   const techDivRef = useRef();
   const TechRef = useRef();
+
   useEffect(() => {
+    const currentTechRef = TechRef.current; // Store in variable
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            techDivRef.current.classList.add("scale-100");
+            if (techDivRef.current) {
+              techDivRef.current.classList.add("scale-100");
+            }
             TechsRefs.current.forEach((ref) => {
               if (ref) ref.classList.add("fade-tech");
             });
@@ -92,16 +99,17 @@ const Techs = () => {
       { threshold: 0.8 },
     );
 
-    if (TechRef.current) {
-      observer.observe(TechRef.current);
+    if (currentTechRef) {
+      observer.observe(currentTechRef);
     }
 
     return () => {
-      if (TechRef.current) {
-        observer.unobserve(TechRef.current);
+      if (currentTechRef) {
+        observer.unobserve(currentTechRef);
       }
     };
-  }, []);
+  }, []); // Empty dependency array is fine now
+
   return (
     <div ref={TechRef} className="w-full bg-primary relative py-10">
       <h2 className="text-[4rem] text-center font-medium mb-4 text-white">
@@ -120,8 +128,7 @@ const Techs = () => {
             className="group relative bg-[#2d2f32] hover:bg-[#171818] rounded-md overflow-hidden hover:shadow-xl duration-300 flex items-center justify-center h-[190px] cursor-pointer text-white hover:text-secondary opacity-0 translate-y-[50px]"
           >
             <div className="h-fit p-6 ">
-              {" "}
-              <h1 className=" justify-center flex mb-2 text-[3.2rem]">
+              <h1 className="justify-center flex mb-2 text-[3.2rem]">
                 {tech.icon}
               </h1>
               <h2 className="text-center"> {tech.name} </h2>

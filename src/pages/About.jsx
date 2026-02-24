@@ -7,11 +7,15 @@ function About() {
   const BgGreen = useRef();
 
   useEffect(() => {
+    const currentAboutRef = AboutRef.current;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            BgGreen.current.classList.add("scale-100");
+            if (BgGreen.current) {
+              BgGreen.current.classList.add("scale-100");
+            }
             box1Ref.current.forEach((ref) => {
               if (ref) ref.classList.add("fade-scaling");
             });
@@ -24,13 +28,13 @@ function About() {
       { threshold: 0.9 },
     );
 
-    if (AboutRef.current) {
-      observer.observe(AboutRef.current);
+    if (currentAboutRef) {
+      observer.observe(currentAboutRef);
     }
 
     return () => {
-      if (AboutRef.current) {
-        observer.unobserve(AboutRef.current);
+      if (currentAboutRef) {
+        observer.unobserve(currentAboutRef);
       }
     };
   }, []);
