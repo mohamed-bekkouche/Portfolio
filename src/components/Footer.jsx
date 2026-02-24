@@ -5,28 +5,39 @@ function Footer() {
   return (
     <div className="bg-[#1c1d1f] py-5">
       <div className="text-[2.2rem] text-[#e2e2e2] flex justify-center items-center gap-5 mb-5">
-        <a href="https://github.com/mohamed-bekkouche"
+        <a
+          href="https://github.com/mohamed-bekkouche"
           target="_blank"
-          className=" cursor-pointer hover:scale-[1.05] duration-200 hover:translate-y-[-5px] ">
+          className=" cursor-pointer hover:scale-[1.05] duration-200 hover:translate-y-[-5px] "
+          rel="noreferrer"
+        >
           {" "}
           <FaGithub className="shadowSociale" />{" "}
         </a>
-        <a href="https://www.linkedin.com/in/mohamed-bekkouche/"
+        <a
+          href="https://www.linkedin.com/in/mohamed-bekkouche/"
+          rel="noreferrer"
           target="_blank"
-          className=" cursor-pointer hover:scale-[1.05] duration-200 hover:translate-y-[-5px]   block ">
+          className=" cursor-pointer hover:scale-[1.05] duration-200 hover:translate-y-[-5px]   block "
+        >
           {" "}
           <FaLinkedin className="shadowSociale" />{" "}
         </a>
         <a
           href="mailto:mohamed.bekkouche@univ-constantine2.dz"
           target="_blank"
-          className=" cursor-pointer hover:scale-[1.05] duration-200 hover:translate-y-[-5px]   block ">
+          rel="noreferrer"
+          className=" cursor-pointer hover:scale-[1.05] duration-200 hover:translate-y-[-5px]   block "
+        >
           {" "}
           <FaEnvelope className="shadowSociale" />{" "}
         </a>
         <a
           href="https://www.instagram.com/mohamed_bk25"
-          target="_blank" className="cursor-pointer  hover:scale-[1.05] duration-200 hover:translate-y-[-5px]">
+          target="_blank"
+          className="cursor-pointer  hover:scale-[1.05] duration-200 hover:translate-y-[-5px]"
+          rel="noreferrer"
+        >
           {" "}
           <FaInstagram className="shadowSociale" />{" "}
         </a>

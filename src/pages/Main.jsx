@@ -1,5 +1,3 @@
-import React from "react";
-import Footer from "../components/Footer";
 import GalleryProjects from "../components/GalleryProjects";
 import Header from "../components/Header";
 import MouseFollower from "../components/MouseFollwer";

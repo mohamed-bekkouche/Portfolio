@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import emailjs from "emailjs-com";
 import Globe from "../components/Globe";
@@ -28,7 +28,7 @@ const Contact = () => {
         "service_z7uljhm",
         "template_6zy5l9o",
         templateParams,
-        "UlpkbnBdtvynHA5xh"
+        "UlpkbnBdtvynHA5xh",
       )
       .then(
         (result) => {
@@ -50,7 +50,7 @@ const Contact = () => {
             MessageFailRef.current?.classList.toggle("scale-0");
             MessageFailRef.current?.classList.toggle("-translate-y-[200px]");
           }, 2000);
-        }
+        },
       );
   };
 
@@ -66,7 +66,7 @@ const Contact = () => {
           }
         });
       },
-      { threshold: 0.7 }
+      { threshold: 0.7 },
     );
 
     if (contactBoxRef.current) observer.observe(contactBoxRef.current);

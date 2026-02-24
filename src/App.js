@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import MouseFollower from "./components/MouseFollwer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProjectDetailsPage from "./components/Portfolio";
 import Main from "./pages/Main";

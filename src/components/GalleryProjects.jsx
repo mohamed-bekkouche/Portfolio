@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const GalleryProjects = () => {
   const [lastScrollTop, setLastScrollTop] = useState(0);
@@ -7,7 +7,6 @@ const GalleryProjects = () => {
   const topRowPositionRef = useRef(0);
   const bottomRowPositionRef = useRef(0);
 
-  // Example image arrays - replace with your actual image arrays
   const topRowImages = [
     "images/Gallery/g1.webp",
     "images/Gallery/g2.webp",
@@ -74,7 +73,7 @@ const GalleryProjects = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollTop, isInView]);
+  }, [lastScrollTop, isInView, topRowImages.length]);
 
   return (
     <div
