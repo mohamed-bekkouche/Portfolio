@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -14,16 +14,59 @@
     <link rel="icon" href="%PUBLIC_URL%/logo.svg" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.svg" />
 
+    <!-- Critical image preload -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/hero.webp"
+      fetchpriority="high"
+    />
+
     <!-- Web Manifest -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    <!-- Google Fonts -->
+    <!-- CRITICAL: System font fallback to prevent CLS -->
+    <style>
+      /* System font stack - immediate rendering */
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+          "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Reserve space for hero image to prevent CLS */
+      .hero-image-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        min-height: 600px;
+        aspect-ratio: 672/1008;
+      }
+    </style>
+
+    <!-- Google Fonts - Non-blocking -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="
+        this.media = 'all';
+        this.onload = null;
+      "
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <!-- Open Graph Meta Tags -->
     <meta

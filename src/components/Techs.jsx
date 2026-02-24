@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { FaExternalLinkAlt, FaJs, FaNodeJs, FaReact } from "react-icons/fa";
+import { FaJs, FaNodeJs, FaReact } from "react-icons/fa";
 import {
   SiExpress,
   SiTypescript,
@@ -89,7 +89,7 @@ const Techs = () => {
           }
         });
       },
-      { threshold: 0.8 }
+      { threshold: 0.8 },
     );
 
     if (TechRef.current) {

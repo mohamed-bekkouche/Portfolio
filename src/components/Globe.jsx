@@ -1,5 +1,18 @@
 import { useEffect, useRef } from "react";
-import * as THREE from "three";
+import {
+  WebGLRenderer,
+  Scene,
+  OrthographicCamera,
+  Clock,
+  IcosahedronGeometry,
+  Points,
+  Mesh,
+  ShaderMaterial,
+  MeshBasicMaterial,
+  SphereGeometry,
+  TextureLoader,
+  Vector3,
+} from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { vertexShader, fragmentShader } from "./shaders";
 
@@ -12,102 +25,121 @@ const Globe = () => {
   const popupRef = useRef(null);
 
   useEffect(() => {
-    if (
-      !containerRef.current ||
-      !canvas3DRef.current ||
-      !canvas2DRef.current ||
-      !popupRef.current
-    )
-      return;
+    // Early return if refs aren't ready
+    if (!containerRef.current || !canvas3DRef.current) return;
 
-    let renderer, scene, camera, rayCaster, controls;
-    let globe, globeMesh, pointer, clock, mouse;
-    let mapMaterial;
+    // Store refs in variables for cleanup
+    const container = containerRef.current;
+    const canvas3D = canvas3DRef.current;
+
+    let renderer, scene, camera, controls;
+    let globe, globeMesh, pointer;
+    let mapMaterial, animationFrame;
+    let clock;
 
     const init = async () => {
-      // Setup renderer
-      renderer = new THREE.WebGLRenderer({
-        canvas: canvas3DRef.current,
-        alpha: true,
-      });
-      renderer.setPixelRatio(4);
+      try {
+        // Setup renderer with optimal settings
+        renderer = new WebGLRenderer({
+          canvas: canvas3D,
+          alpha: true,
+          powerPreference: "high-performance",
+          antialias: true,
+        });
 
-      // Setup scene
-      scene = new THREE.Scene();
-      camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 3);
-      camera.position.z = 1.1;
+        // Calculate optimal pixel ratio (max 2 for performance)
+        const pixelRatio = Math.min(window.devicePixelRatio, 2);
+        renderer.setPixelRatio(pixelRatio);
 
-      // Setup raycaster
-      rayCaster = new THREE.Raycaster();
-      rayCaster.far = 1.15;
-      mouse = new THREE.Vector2(-1, -1);
-      clock = new THREE.Clock();
+        // Setup scene
+        scene = new Scene();
+        camera = new OrthographicCamera(-1, 1, 1, -1, 0, 3);
+        camera.position.z = 1.1;
 
-      // Create controls
-      controls = new OrbitControls(camera, canvas3DRef.current);
-      controls.enablePan = false;
-      controls.enableZoom = false;
-      controls.enableDamping = true;
-      controls.minPolarAngle = 0.4 * Math.PI;
-      controls.maxPolarAngle = 0.4 * Math.PI;
-      controls.autoRotate = true;
+        // Setup helpers
+        clock = new Clock();
 
-      // Load texture and create globe
-      const textureLoader = new THREE.TextureLoader();
-      const earthTexture = await textureLoader.loadAsync(
-        "https://ksenia-k.com/img/earth-map-colored.png"
-      );
+        // Create controls with optimized settings
+        controls = new OrbitControls(camera, canvas3D);
+        controls.enablePan = false;
+        controls.enableZoom = false;
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.minPolarAngle = 0.4 * Math.PI;
+        controls.maxPolarAngle = 0.4 * Math.PI;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 1.0;
 
-      createGlobe(earthTexture);
-      createPointer();
-      addFixedMarkers();
-      updateSize();
-      render();
+        // Load texture
+        const textureLoader = new TextureLoader();
+        const earthTexture = await textureLoader.loadAsync(
+          "https://ksenia-k.com/img/earth-map-colored.png",
+        );
+
+        createGlobe(earthTexture);
+        createPointer();
+        addFixedMarkers();
+
+        // Initial size setup
+        updateSize();
+
+        // Start render loop
+        render();
+      } catch (error) {
+        console.error("Failed to initialize globe:", error);
+      }
     };
 
     const createGlobe = (earthTexture) => {
-      const globeGeometry = new THREE.IcosahedronGeometry(1, 55);
-      mapMaterial = new THREE.ShaderMaterial({
+      // Reduce geometry complexity for better performance
+      const globeGeometry = new IcosahedronGeometry(1, 35); // Reduced from 55
+
+      mapMaterial = new ShaderMaterial({
         vertexShader,
         fragmentShader,
         uniforms: {
-          u_map_tex: { type: "t", value: earthTexture },
-          u_dot_size: { type: "f", value: 0 },
-          u_pointer: { type: "v3", value: new THREE.Vector3(0, 0, 1) },
+          u_map_tex: { value: earthTexture },
+          u_dot_size: { value: 0 },
+          u_pointer: { value: new Vector3(0, 0, 1) },
           u_time_since_click: { value: 0 },
         },
-        alphaTest: false,
         transparent: true,
       });
 
-      globe = new THREE.Points(globeGeometry, mapMaterial);
+      globe = new Points(globeGeometry, mapMaterial);
       scene.add(globe);
 
-      globeMesh = new THREE.Mesh(
-        globeGeometry,
-        new THREE.MeshBasicMaterial({
-          color: 0x000000,
-          transparent: true,
-          opacity: 0.2,
-        })
-      );
-      scene.add(globeMesh);
+      // Only add mesh if needed for debugging/interaction
+      if (process.env.NODE_ENV === "development") {
+        globeMesh = new Mesh(
+          globeGeometry,
+          new MeshBasicMaterial({
+            color: 0x000000,
+            transparent: true,
+            opacity: 0.2,
+          }),
+        );
+        scene.add(globeMesh);
+      }
     };
 
     const createPointer = () => {
-      const geometry = new THREE.SphereGeometry(0.0, 16, 16);
-      const material = new THREE.MeshBasicMaterial({
+      // Start with scale 0, will be updated when needed
+      const geometry = new SphereGeometry(0.015, 8, 8); // Reduced segments
+      const material = new MeshBasicMaterial({
         color: 0xcccccc,
         transparent: true,
         opacity: 1,
       });
-      pointer = new THREE.Mesh(geometry, material);
+      pointer = new Mesh(geometry, material);
+      pointer.scale.set(0, 0, 0); // Start invisible
       scene.add(pointer);
     };
 
     const addFixedMarkers = () => {
-      const markerGeometry = new THREE.SphereGeometry(0.015, 16, 16);
-      const markerMaterial = new THREE.MeshBasicMaterial({ color: 0x8f9094 });
+      // Optimize marker geometry
+      const markerGeometry = new SphereGeometry(0.015, 6, 6); // Reduced segments
+      const markerMaterial = new MeshBasicMaterial({ color: 0x8f9094 });
 
       fixedPoints.forEach((point) => {
         const latRad = (point.lat * Math.PI) / 180;
@@ -116,49 +148,78 @@ const Globe = () => {
         const y = Math.sin(latRad);
         const z = Math.cos(latRad) * Math.sin(longRad);
 
-        const marker = new THREE.Mesh(markerGeometry, markerMaterial);
+        const marker = new Mesh(markerGeometry, markerMaterial);
         marker.position.set(x, y, z).normalize();
         scene.add(marker);
       });
     };
 
     const updateSize = () => {
-      if (!containerRef.current || !canvas2DRef.current) return;
+      if (!container) return;
 
       const minSide = 0.65 * Math.min(window.innerWidth, window.innerHeight);
-      containerRef.current.style.width = `${minSide}px`;
-      containerRef.current.style.height = `${minSide}px`;
-      renderer.setSize(minSide, minSide);
-      canvas2DRef.current.width = canvas2DRef.current.height = minSide;
+      container.style.width = `${minSide}px`;
+      container.style.height = `${minSide}px`;
+
+      if (renderer) {
+        renderer.setSize(minSide, minSide);
+      }
+
       if (mapMaterial) {
         mapMaterial.uniforms.u_dot_size.value = 0.032 * minSide;
       }
     };
 
     const render = () => {
-      if (!mapMaterial) return;
+      if (!mapMaterial || !controls || !scene || !camera || !renderer) return;
 
       mapMaterial.uniforms.u_time_since_click.value = clock.getElapsedTime();
       controls.update();
       renderer.render(scene, camera);
-      requestAnimationFrame(render);
+
+      animationFrame = requestAnimationFrame(render);
     };
+
+    // Handle resize
+    const handleResize = () => {
+      updateSize();
+    };
+
+    // Start initialization
     init();
+
+    // Add event listeners
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup
     return () => {
-      scene.clear();
-      renderer.dispose();
-      controls.dispose();
+      window.removeEventListener("resize", handleResize);
+
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+
+      if (renderer) {
+        renderer.dispose();
+      }
+
+      if (controls) {
+        controls.dispose();
+      }
+
+      if (scene) {
+        scene.clear();
+      }
     };
-  }, []);
+  }, []); // Empty dependency array - only run once
 
   return (
-    <div className=" scale-[0] -rotate-180  cursor-pointer" ref={containerRef}>
-      <canvas className="" ref={canvas3DRef} id="globe-3d" />
-      <canvas ref={canvas2DRef} id="globe-2d-overlay" />
-      <div id="globe-popup-overlay">
+    <div className="scale-[0] -rotate-180 cursor-pointer" ref={containerRef}>
+      <canvas ref={canvas3DRef} id="globe-3d" className="w-full h-full" />
+      <canvas ref={canvas2DRef} id="globe-2d-overlay" className="hidden" />
+      <div id="globe-popup-overlay" className="hidden">
         <div ref={popupRef} className="globe-popup" />
       </div>
-      //{" "}
     </div>
   );
 };

@@ -21,7 +21,7 @@ function About() {
           }
         });
       },
-      { threshold: 0.9 }
+      { threshold: 0.9 },
     );
 
     if (AboutRef.current) {
@@ -88,8 +88,9 @@ function About() {
           ></div>
           <img
             className="w-full absolute bottom-0 left-1/2 -translate-x-1/2"
-            src="/images/me.png"
-            alt="Image"
+            src="/images/me.webp"
+            alt="Me"
+            loading="lazy"
           />
         </div>
       </div>

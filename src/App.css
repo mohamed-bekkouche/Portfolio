@@ -171,7 +171,8 @@ html {
   position: relative;
   width: 200px;
   height: 200px;
-  background: linear-gradient(to bottom, transparent 49.5%, #000 50.5%),
+  background:
+    linear-gradient(to bottom, transparent 49.5%, #000 50.5%),
     linear-gradient(to right, transparent 49.5%, #000 50.5%);
   background-size: 20px 20px;
   background-color: white;

@@ -98,6 +98,7 @@ const Portfolio = () => {
                       src={project.image}
                       alt={project.title}
                       className="object-cover h-full w-full"
+                      loading="lazy"
                     />
                   </div>
                 ))}

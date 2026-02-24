@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import Project from "../components/Project";
 
@@ -17,7 +17,7 @@ function Projects() {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     projectRefs.current.forEach((ref) => {

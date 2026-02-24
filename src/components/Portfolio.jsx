@@ -21,7 +21,7 @@ const ProjectContent = ({ projectId }) => {
   const shadowOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 0.5]);
   const boxShadowValue = useTransform(
     shadowOpacity,
-    (value) => `0px 40px 70px -10px rgba(255, 255, 255, ${value})`
+    (value) => `0px 40px 70px -10px rgba(255, 255, 255, ${value})`,
   );
 
   //   const currentId = parseInt(projectId);
@@ -172,7 +172,12 @@ const ProjectContent = ({ projectId }) => {
             style={{ animationDelay: "1.1s", animationDuration: "0.5s" }}
             className="w-[290px] relative overflow-hidden fade-scaling scale-0"
           >
-            <img className="w-full relative z-10" src="/images/iphone.png" />
+            <img
+              className="w-full relative z-10"
+              alt="phone"
+              loading="lazy"
+              src="/images/iphone.png"
+            />
             <div className=" absolute top-4 w-[90%] h-[calc(100%-50px)] flex flex-col left-1/2 -translate-x-1/2">
               <div className="flex items-center justify-end gap-2 pr-3 py-1 ">
                 <GiNetworkBars className=" scale-y-75" />
@@ -182,6 +187,8 @@ const ProjectContent = ({ projectId }) => {
               <img
                 className="w-full h-full object-cover rounded-[32px] rounded-t-none"
                 src={project?.phoneImage}
+                alt={"project"}
+                loading="lazy"
               />
             </div>
           </div>
@@ -191,7 +198,12 @@ const ProjectContent = ({ projectId }) => {
       <div className="pt-24 pb-16">
         <div className="h-screen  w-[90%] mx-auto flex justify-center items-center gap-5 px-10 ">
           <div className="flex-1 relative overflow-hidden">
-            <img className="w-full relative z-10" src="/images/pc.png" />
+            <img
+              className="w-full relative z-10"
+              src="/images/pc.png"
+              alt="pc"
+              loading="lazy"
+            />
             <div className=" absolute top-5 w-[78%] h-[85%] left-1/2 -translate-x-1/2">
               <video
                 className="w-full h-full object-cover"
@@ -207,10 +219,10 @@ const ProjectContent = ({ projectId }) => {
 
       <div className="w-full bg-white py-24">
         <div className=" w-[90%] mx-auto mb-10 shadow-lg flex justify-center items-center">
-          <img src={project?.subImages[0]} />
+          <img src={project?.subImages[0]} alt="sub" loading="lazy" />
         </div>
         <div className=" w-[90%] mx-auto shadow-lg  flex justify-center items-center  ">
-          <img src={project?.subImages[1]} />
+          <img src={project?.subImages[1]} alt="sub" loading="lazy" />
         </div>
       </div>
 
@@ -231,11 +243,18 @@ const ProjectContent = ({ projectId }) => {
         <div className="w-screen  pt-8 pb-16 ">
           <div className="min-h-screen  w-[70%] mx-auto  flex justify-center items-center gap-5 px-10">
             <div className="flex-1 relative overflow-hidden">
-              <img className="w-full relative z-10" src="/images/imac.png" />
+              <img
+                className="w-full relative z-10"
+                src="/images/imac.png"
+                alt="Imac"
+                loading="lazy"
+              />
               <div className=" absolute top-1.5 w-full h-[72%] left-1/2 -translate-x-1/2">
                 <img
                   className="w-full h-full object-cover"
                   src={project.subImages[2]}
+                  alt="sub"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -257,7 +276,12 @@ const ProjectContent = ({ projectId }) => {
         </div>
         <div className="flex items-center gap-5 w-4/5 mx-auto">
           <div className="w-[230px] relative overflow-hidden">
-            <img className="w-full relative z-10" src="/images/iphone.png" />
+            <img
+              className="w-full relative z-10"
+              src="/images/iphone.png"
+              alt="iPhone"
+              loading="lazy"
+            />
             <div className=" absolute top-3 w-[90%] h-[calc(100%-42px)] flex flex-col left-1/2 -translate-x-1/2">
               <div className="flex items-center justify-end gap-2 pr-3 py-1 text-xs">
                 <GiNetworkBars className=" scale-y-75" />
@@ -267,16 +291,25 @@ const ProjectContent = ({ projectId }) => {
               <img
                 className="w-full h-full object-cover rounded-[24px] rounded-t-none"
                 src={nextProject?.phoneImage}
+                alt="project"
+                loading="lazy"
               />
             </div>
           </div>
           <div className="flex-1 mx-auto flex justify-center items-center gap-5 px-10 relative">
             <div className="flex-1 relative overflow-hidden">
-              <img className="w-full relative z-10" src="/images/pc.png" />
+              <img
+                className="w-full relative z-10"
+                src="/images/pc.png"
+                alt="Pc"
+                loading="lazy"
+              />
               <div className=" absolute top-5 w-[78%] h-[85%] left-1/2 -translate-x-1/2">
                 <img
                   className="w-full h-full object-cover"
                   src={nextProject?.subImages[0]}
+                  alt="sub"
+                  loading="lazy"
                 />
               </div>
             </div>

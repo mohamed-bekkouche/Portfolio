@@ -1,7 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { IoMdMenu } from "react-icons/io";
 import Logo from "./Logo";
-import MagneticMenuButton from "./MagneticMenuButton";
 
 function Header() {
   const iconRef = useRef(null);

@@ -9,24 +9,24 @@ const GalleryProjects = () => {
 
   // Example image arrays - replace with your actual image arrays
   const topRowImages = [
-    "images/Gallery/g1.png",
-    "images/Gallery/g2.png",
-    "images/Gallery/g4.png",
-    "images/Gallery/scc3.png",
-    "images/Gallery/ssc1.png",
-    "images/Gallery/g10.png",
-    "/images/Gallery/verticcity2.jpg",
-    "images/Gallery/g14.png",
+    "images/Gallery/g1.webp",
+    "images/Gallery/g2.webp",
+    "images/Gallery/g4.webp",
+    "images/Gallery/scc3.webp",
+    "images/Gallery/ssc1.webp",
+    "images/Gallery/g10.webp",
+    "/images/Gallery/verticcity2.webp",
+    "images/Gallery/g14.webp",
   ];
 
   const bottomRowImages = [
-    "images/Gallery/g7.png",
-    "images/Gallery/g9.png",
-    "images/Gallery/scc4.png",
-    "images/Gallery/g13.png",
-    "/images/Gallery/verticcity1.jpg",
-    "images/Gallery/g15.png",
-    "images/Gallery/scc2.png",
+    "images/Gallery/g7.webp",
+    "images/Gallery/g9.webp",
+    "images/Gallery/scc4.webp",
+    "images/Gallery/g13.webp",
+    "/images/Gallery/verticcity1.webp",
+    "images/Gallery/g15.webp",
+    "images/Gallery/scc2.webp",
   ];
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const GalleryProjects = () => {
       },
       {
         threshold: 0.2,
-      }
+      },
     );
 
     if (galleryRef.current) {
@@ -60,7 +60,6 @@ const GalleryProjects = () => {
         topRowPositionRef.current += moveAmount;
         bottomRowPositionRef.current -= moveAmount;
 
-        const containerWidth = window.innerWidth;
         const rowWidth = (300 + 16) * topRowImages.length;
 
         if (Math.abs(topRowPositionRef.current) > rowWidth) {
@@ -95,8 +94,9 @@ const GalleryProjects = () => {
               <div key={index} className="flex-none w-[500px] h-[320px]">
                 <img
                   src={src}
-                  alt={`Gallery image ${index + 1}`}
+                  alt={`Gallery ${index + 1}`}
                   className="w-full h-full object-cover rounded-lg"
+                  loading="lazy"
                 />
               </div>
             ))}
@@ -116,8 +116,9 @@ const GalleryProjects = () => {
               <div key={index} className="flex-none w-[500px] h-[320px]">
                 <img
                   src={src}
-                  alt={`Gallery image ${index + 1}`}
+                  alt={`Gallery ${index + 1}`}
                   className="w-full h-full object-cover rounded-lg"
+                  loading="lazy"
                 />
               </div>
             ))}
