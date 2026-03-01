@@ -45,7 +45,7 @@ const MouseFollower = () => {
 
   return (
     <div
-      className="fixed flex justify-center items-center rounded-full bg-secondary transition-transform duration-150 ease-out z-50 w-4 h-4"
+      className="hidden fixed md:flex justify-center items-center rounded-full bg-secondary transition-transform duration-150 ease-out z-50 w-4 h-4"
       style={{
         left: `${position.x + 10}px`,
         top: `${position.y + 10}px`,

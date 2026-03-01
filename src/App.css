@@ -121,13 +121,37 @@ html {
 
 .ImageAnimation {
   animation: imageAnimation 0.75s ease-in-out 0.5s forwards;
+  width: 0; /* initial width */
 }
+
 @keyframes imageAnimation {
   from {
-    width: 0%;
+    width: 0;
   }
   to {
-    width: 420px;
+    width: 280px;
+  }
+}
+
+@media (min-width: 1024px) {
+  @keyframes imageAnimation {
+    from {
+      width: 0;
+    }
+    to {
+      width: 350px;
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  @keyframes imageAnimation {
+    from {
+      width: 0;
+    }
+    to {
+      width: 420px;
+    }
   }
 }
 
@@ -216,6 +240,18 @@ html {
   to {
     opacity: 1;
     transform: translateX(-20%) rotate(-5deg);
+  }
+}
+@media (max-width: 866px) {
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) rotate(-5deg);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0%) rotate(-5deg);
+    }
   }
 }
 
@@ -339,5 +375,226 @@ html {
   }
   100% {
     height: 0dvh;
+  }
+}
+
+.project-row {
+  animation: fadeUp 0.6s ease both;
+}
+
+.project-link:not(:hover) .project-index {
+  opacity: 0.35;
+}
+
+.project-link:hover .project-index {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* ── Mobile accordion ── */
+.mobile-preview {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-preview.open {
+  grid-template-rows: 1fr;
+}
+
+.mobile-preview > div {
+  overflow: hidden;
+}
+
+/* ── Desktop preview card ── */
+.preview-card {
+  transition: opacity 0.2s ease;
+}
+
+.preview-card.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ghost-idx {
+  font-size: clamp(5rem, 15vw, 12rem);
+  -webkit-text-stroke: 1px var(--secondary-color);
+  color: transparent;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.project-link:hover .ghost-idx {
+  opacity: 0.4;
+}
+
+.custom-stroke {
+  -webkit-text-stroke: 1.5px rgba(60, 207, 145, 0.3);
+}
+
+@keyframes charIn {
+  from {
+    opacity: 0;
+    transform: translateY(38px) skewY(4deg);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) skewY(0deg);
+    filter: blur(0);
+  }
+}
+.char-reveal {
+  opacity: 0;
+}
+.chars-active .char-reveal {
+  animation: charIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes blockIn {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.blk {
+  opacity: 0;
+}
+.blk.on {
+  animation: blockIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.v-label {
+  writing-mode: vertical-rl;
+}
+
+/* gdgcqmlcq  */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap");
+
+/* ── Bounce animation for Globe ── */
+.Bounce {
+  animation: floatGlobe 3s ease-in-out infinite;
+}
+
+@keyframes floatGlobe {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(2deg);
+  }
+}
+
+/* ── Noise grain overlay ── */
+.contact-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+/* ── Animated gradient border on card ── */
+.premium-card {
+  position: relative;
+}
+
+.premium-card::after {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(255, 255, 255, 0.12) 100%
+  );
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ── Input focus glow ── */
+.premium-input:focus {
+  box-shadow: 0 0 0 3px rgba(var(--secondary-rgb, 80, 120, 200), 0.15);
+}
+
+/* ── Button shimmer sweep ── */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+  transition: left 0.55s ease;
+}
+
+.btn-shimmer:hover::after {
+  left: 150%;
+}
+
+/* ── Toast slide-in ── */
+.toast-enter {
+  transform: translateY(0) scale(1) !important;
+}
+
+/* ── Decorative line pulse ── */
+.deco-line {
+  position: absolute;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  animation: linePulse 4s ease-in-out infinite;
+}
+
+@keyframes linePulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+/* ── Responsive tweaks ── */
+@media (max-width: 768px) {
+  .globe-wrapper {
+    display: none;
+  }
+
+  .contact-form-wrapper {
+    width: 100% !important;
+    padding: 0 1.25rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-heading {
+    font-size: 2.2rem !important;
   }
 }
