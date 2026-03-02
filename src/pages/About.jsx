@@ -142,7 +142,7 @@ export default function About() {
               objectFit: "contain",
               objectPosition: "bottom",
             }}
-            src="/images/me_sm.png"
+            src="/images/me_sm.webp"
             alt="Mohamed Bekkouche"
             loading="lazy"
           />
@@ -175,7 +175,7 @@ export default function About() {
               objectFit: "contain",
               objectPosition: "bottom",
             }}
-            src="/images/me_sm.png"
+            src="/images/me_sm.webp"
             alt="Mohamed Bekkouche"
             loading="lazy"
           />

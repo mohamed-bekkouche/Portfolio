@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
 import { motion } from "framer-motion";
 
-/* ── Detect touch / mobile ── */
 const useIsMobile = () => {
   const [mobile, setMobile] = useState(false);
   useEffect(() => {
