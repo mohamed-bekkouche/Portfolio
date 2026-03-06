@@ -356,6 +356,7 @@ html {
 
 .width-shring {
   animation: widthShrink 0.5s ease-out 0.5s forwards;
+  will-change: width;
 }
 
 .borderTop {

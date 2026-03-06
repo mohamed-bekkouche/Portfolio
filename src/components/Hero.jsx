@@ -63,7 +63,7 @@ function Hero() {
           >
             <div
               style={{ animationDelay: `${delay + 500}ms` }}
-              className={`letter`}
+              className={`${isMdUp ? "" : "letter"}`}
             >
               e
             </div>
