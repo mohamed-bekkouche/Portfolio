@@ -3,7 +3,7 @@ import Hero from "../components/Hero";
 function Home() {
   return (
     <div id="Home" className=" w-full h-[100dvh] overflow-hidden">
-      <div class="absolute z-0 bottom-0 -left-3 right-0 top-0 bg-[linear-gradient(to_right,#3ccf912e_1.5px,transparent_1.5px),linear-gradient(to_bottom,#3ccf912e_1.5px,transparent_1.5px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,#000_70%,transparent_110%)]"></div>
+      <div className="absolute z-0 bottom-0 -left-3 right-0 top-0 bg-[linear-gradient(to_right,#3ccf912e_1.5px,transparent_1.5px),linear-gradient(to_bottom,#3ccf912e_1.5px,transparent_1.5px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,#000_70%,transparent_110%)]"></div>
       <div className="w-[90%] mx-auto min-h-[100vh] flex justify-between items-center">
         <Hero />
         <div className="hidden md:block imageSection w-1/6 lg:w-2/5 h-[100vh] relative">
