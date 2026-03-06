@@ -42,7 +42,7 @@ function Hero() {
             <img
               className="w-full h-full object-cover rounded-full"
               alt="me"
-              src="/images/me_sm.png"
+              src="/images/me_sm.webp"
             />{" "}
           </motion.div>
           Hey, It's Me.{" "}
@@ -62,8 +62,8 @@ function Hero() {
             className="flip-container opacity-0 fade-in-down"
           >
             <div
-              style={{ animationDelay: `${delay + 1000}ms` }}
-              className="letter"
+              style={{ animationDelay: `${delay + 500}ms` }}
+              className={`letter`}
             >
               e
             </div>

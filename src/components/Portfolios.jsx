@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
-import { motion } from "framer-motion";
 
 const useIsMobile = () => {
   const [mobile, setMobile] = useState(false);
@@ -23,7 +22,6 @@ const Portfolio = () => {
   const [activeProjectId, setActiveProjectId] = useState(null);
   const [expandedId, setExpandedId] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: -999, y: -999 });
-  const [cursorExpanded, setCursorExpanded] = useState(false);
 
   useEffect(() => {
     if (isMobile) return;
@@ -132,11 +130,9 @@ const Portfolio = () => {
                     className="project-link group block w-full border-t border-white/15 py-7 md:py-8 relative overflow-hidden no-underline"
                     onMouseEnter={() => {
                       setActiveProjectId(project.id);
-                      setCursorExpanded(true);
                     }}
                     onMouseLeave={() => {
                       setActiveProjectId(null);
-                      setCursorExpanded(false);
                     }}
                   >
                     <div className="flex items-center gap-6 md:gap-8">

@@ -8,7 +8,7 @@ export const projects = [
     video: "/images/project/bsesa.mp4",
     description:
       "A comprehensive website designed to showcase the global impact and expertise of a UK-based elite sports science team. The platform highlights their international collaborations across multiple countries including Sweden, France, Morocco, and beyond. Featuring detailed profiles of their sports scientists, coaches, and specialized professionals, the site demonstrates their methodologies, success stories, and innovative approaches to sports science. Users can explore case studies of athlete development, read testimonials from international clients, and discover how BSESA's evidence-based techniques have transformed performance outcomes across diverse sporting disciplines and cultural contexts.",
-    image: "/images/project/Bsesa.png",
+    image: "/images/project/Bsesa.webp",
     phoneImage: "/images/Gallery/bsesaPhone.webp",
     subImages: [
       "/images/Gallery/g1.webp",
@@ -38,7 +38,7 @@ export const projects = [
     year: "2023",
     description:
       "An innovative restaurant platform engineered to revolutionize the dining experience through seamless food ordering and intuitive table booking functionality. The system showcases an extensive and visually appealing menu with high-quality food photography and detailed descriptions that entice customers. Foodly's user interface prioritizes ease of navigation, allowing customers to filter by dietary preferences, browse popular items, and track their order status in real-time. The comprehensive admin panel provides restaurant owners with powerful tools for inventory management, sales analytics, customer feedback monitoring, and reservation optimization. Special features include customizable loyalty programs, promotional campaign creation, and an intelligent algorithm.",
-    image: "/images/project/foodly.png",
+    image: "/images/project/foodly.webp",
     category: "Web Development",
     video: "/images/project/foodly.mp4",
     link: "https://food-lly.vercel.app/",
@@ -70,7 +70,7 @@ export const projects = [
     year: "2024",
     description:
       "A revolutionary health and wellness platform that integrates physical fitness, nutritional science, and psychological well-being into one comprehensive ecosystem. Users receive fully personalized fitness regimens and nutrition plans based on sophisticated algorithms analyzing their unique body composition, fitness goals, medical history, and lifestyle factors. The platform facilitates direct communication with a network of certified specialists including nutritionists, personal trainers, physiotherapists, and mental health counselors, available for virtual consultations and ongoing support. Educational resources include in-depth articles, video tutorials, interactive workshops, and community forums designed to empower users with evidence-based knowledge.",
-    image: "/images/project/sport.png",
+    image: "/images/project/sport.webp",
     phoneImage: "/images/Gallery/sportPhone.webp",
     subImages: [
       "/images/Gallery/g11.webp",
@@ -101,7 +101,7 @@ export const projects = [
     year: "2025",
     description:
       "Welcome to the Start Coding Club – where creativity meets code! Our mission is to empower learners and innovators to master essential skills in programming, design, networking, freelancing, and client communication. Whether you're a beginner taking your first steps into the world of technology or an expert looking to refine your skills, our community provides the perfect space to grow, collaborate, and innovate. Join us to learn, build, and connect with like-minded individuals who share a passion for technology and problem-solving. Let's turn ideas into reality—one line of code at a time!",
-    image: "/images/project/scc.png",
+    image: "/images/project/scc.webp",
     video: "/images/project/scc.mp4",
     phoneImage: "/images/Gallery/sccPhone.webp",
     subImages: [
@@ -138,7 +138,7 @@ export const projects = [
     subImages: [
       "/images/Gallery/verticcity2.webp",
       "/images/Gallery/verticcity1.webp",
-      "/images/Gallery/verticcity3.webp",
+      "/images/Gallery/verticcity2.webp",
     ],
     techs: [
       {
@@ -193,7 +193,7 @@ export const projects = [
     year: "2024",
     description:
       "Masroofy stands as an innovative financial management application designed to transform how individuals interact with their personal finances. The platform offers comprehensive expense tracking with automatic categorization and customizable tags, allowing users to visualize spending habits through intuitive charts and graphs that identify trends and potential saving opportunities. Advanced budgeting tools enable the creation of flexible monthly and goal-based budgets with real-time notifications when approaching limits. Income monitoring features track multiple revenue streams with detailed analytics on earnings patterns, while the built-in financial planning section helps users establish emergency funds, plan for large purchases, and develop long-term investment strategies.",
-    image: "/images/project/masroofy.png",
+    image: "/images/project/masroofy.webp",
     video: "/images/project/masroofy.mp4",
     phoneImage: "/images/Gallery/masroofyPhone.webp",
     subImages: [

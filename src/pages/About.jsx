@@ -149,7 +149,7 @@ export default function About() {
         </div>
       </div>
 
-      <div className="flex lg:hidden flex-col min-h-screen">
+      <div className="flex lg:hidden flex-col h-fit">
         <div
           className="relative w-full overflow-hidden flex items-end justify-center"
           style={{ height: "60vw", minHeight: "280px", maxHeight: "420px" }}
@@ -184,15 +184,15 @@ export default function About() {
           </span>
         </div>
 
-        <div className="flex flex-col gap-6 px-5 sm:px-8 py-10 flex-1">
+        <div className="flex flex-col gap-6 px-5 sm:px-8 py-10 flex-1 ">
           <div>
-            <p className="font-bold leading-3 text-xs uppercase text-secondary">
+            <p className="font-bold leading-3 text-xs uppercase text-secondary mb-3">
               Full-Stack Developer
             </p>
             <h1
               className={`font-caniculeDisplay font-black text-white leading-none ${revealed ? "chars-active" : ""}`}
               style={{
-                fontSize: "clamp(2.3rem,9vw,3.8rem)",
+                fontSize: "clamp(1.9rem,9vw,3.5rem)",
                 letterSpacing: "-.02em",
               }}
             >
