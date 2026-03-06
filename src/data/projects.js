@@ -1,5 +1,6 @@
 import { SiMongodb, SiCloudinary, SiStripe } from "react-icons/si";
 import { FaNodeJs, FaReact } from "react-icons/fa";
+import { SiTypescript } from "react-icons/si";
 export const projects = [
   {
     id: 0,
@@ -34,6 +35,37 @@ export const projects = [
   },
   {
     id: 1,
+    title: "Fennec Wear",
+    year: "2026",
+    description:
+      "FENNEC Wear is a premium menswear platform dedicated to classic tailoring and timeless elegance. Inspired by the “old money” aesthetic, the brand offers high-quality suits, jackets, and accessories designed for modern gentlemen who value sophistication and refined style. The platform features a visually rich catalog with detailed product presentations, allowing customers to easily explore different styles and fabrics. A key highlight is the “Build Your Suit” customization experience, where users can combine various suit elements to create a personalized look that reflects their unique taste. The platform emphasizes smooth navigation, fast performance, and a seamless shopping experience. With reliable nationwide delivery across Algeria within 48 hours, FENNEC Wear brings premium tailoring and modern convenience together in one refined fashion destination.",
+    image: "/images/project/Fennec.webp",
+    category: "Web Development",
+    video: "/images/project/fennec.mp4",
+    link: "https://fennecdemo.vercel.app/",
+    phoneImage: "/images/Gallery/fennecPhone.webp",
+    subImages: [
+      "/images/Gallery/fennec1.webp",
+      "/images/Gallery/fennec2.webp",
+      "/images/Gallery/fennec3.webp",
+    ],
+    techs: [
+      {
+        name: "React Js",
+        icon: <FaReact />,
+      },
+      {
+        name: "Node Js",
+        icon: <FaNodeJs />,
+      },
+      {
+        name: "TypeScript",
+        icon: <SiTypescript />,
+      },
+    ],
+  },
+  {
+    id: 2,
     title: "Foodly",
     year: "2023",
     description:
@@ -64,7 +96,7 @@ export const projects = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: "Your Health ",
     category: "Web Development",
     year: "2024",
@@ -95,7 +127,7 @@ export const projects = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: "Start Coding Club",
     category: "Mobil Development",
     year: "2025",
@@ -126,7 +158,7 @@ export const projects = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     title: "VerticCity",
     category: "Web Development",
     year: "2023",
@@ -156,7 +188,7 @@ export const projects = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     title: "starbucks",
     category: "Web Development",
     year: "2023",
@@ -187,7 +219,7 @@ export const projects = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     title: "masroofy",
     category: "Web Development",
     year: "2024",
