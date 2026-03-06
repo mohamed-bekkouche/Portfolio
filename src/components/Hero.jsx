@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 function Hero() {
   const isMdUp = useMediaQuery("(min-width: 768px)");
-  const delay = isMdUp ? 2100 : 500;
+  const delay = isMdUp ? 1400 : 500;
   const heroRef = useRef(null);
 
   useEffect(() => {
@@ -51,7 +51,7 @@ function Hero() {
           {"Mohamed Bekkouch".split("").map((e, i) => (
             <div
               key={i}
-              style={{ animationDelay: `${delay + 20 * i}ms` }}
+              style={{ animationDelay: `${delay + 10 * i}ms` }}
               className="fade-in-down opacity-0"
             >
               {e === " " ? "\u00A0" : e}

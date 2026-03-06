@@ -14,8 +14,6 @@ function Home() {
                 className="w-full absolute left-1/2 bottom-0 -translate-x-[calc(50%-30px)] -translate-y-[20%] scale-125 rotate-[-11deg]"
                 src="/images/hero.webp"
                 alt="Hero"
-                // width="672"
-                // height="1008"
               />
             </div>
           </div>
